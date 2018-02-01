@@ -18,7 +18,7 @@ var Sugar = require('sugar/date');
 var nodemailer = require('nodemailer');
 var _ = require('lodash');
 
-var tokenSecret = '9EF1D1E7D28FDA0B';
+var tokenSecret = '7F558A241175D8E8';
 
 var showSchema = new mongoose.Schema({
   _id: Number,
