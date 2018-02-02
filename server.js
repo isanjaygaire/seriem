@@ -82,7 +82,7 @@ userSchema.methods.comparePassword = function(candidatePassword, cb) {
 var User = mongoose.model('User', userSchema);
 var Show = mongoose.model('Show', showSchema);
 
-mongoose.connect('localhost');
+mongoose.connect('mongodb://sanjay:QMpP98Dhui40@ds121268.mlab.com:21268/seriem-db');
 
 var app = express();
 
@@ -369,24 +369,24 @@ agenda.define('send email alert', function(job, done) {
       return new Date(episode.firstAired) > new Date();
     })[0];
 
-    var smtpTransport = nodemailer.createTransport('SMTP', {
-      service: 'SendGrid',
-      auth: { user: 'hslogin', pass: 'hspassword00' }
-    });
+    // var smtpTransport = nodemailer.createTransport('SMTP', {
+    //   service: 'SendGrid',
+    //   auth: { user: 'hslogin', pass: 'hspassword00' }
+    // });
 
-    var mailOptions = {
-      from: 'Fred Foo ✔ <foo@blurdybloop.com>',
-      to: emails.join(','),
-      subject: show.name + ' is starting soon!',
-      text: show.name + ' starts in less than 2 hours on ' + show.network + '.\n\n' +
-      'Episode ' + upcomingEpisode.episodeNumber + ' Overview\n\n' + upcomingEpisode.overview
-    };
+    // var mailOptions = {
+    //   from: 'Fred Foo ✔ <foo@SanjayGaire>',
+    //   to: emails.join(','),
+    //   subject: show.name + ' is starting soon!',
+    //   text: show.name + ' starts in less than 2 hours on ' + show.network + '.\n\n' +
+    //   'Episode ' + upcomingEpisode.episodeNumber + ' Overview\n\n' + upcomingEpisode.overview
+    // };
 
-    smtpTransport.sendMail(mailOptions, function(error, response) {
-      console.log('Message sent: ' + response.message);
-      smtpTransport.close();
-      done();
-    });
+    // smtpTransport.sendMail(mailOptions, function(error, response) {
+    //   console.log('Message sent: ' + response.message);
+    //   smtpTransport.close();
+    //   done();
+    // });
   });
 });
 
